@@ -31,7 +31,26 @@ def test_case():
     ]
     for item in FlatIterator(nested_list):
         print(item)
+    flat_list = [item for item in FlatIterator(nested_list)]
+    print(flat_list)
+
+
+def flat_generator(nested_list):
+    for list_item in nested_list:
+        for char in list_item:
+            yield char
+
+
+def another_test_case():
+    nested_list = [
+        ['a', 'b', 'c'],
+        ['d', 'e', 'f'],
+        [1, 2, None],
+    ]
+    for item in flat_generator(nested_list):
+        print(item)
 
 
 if __name__ == '__main__':
     test_case()
+    another_test_case()
